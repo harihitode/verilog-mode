@@ -2801,7 +2801,7 @@ find the errors."
        "mailbox" "semaphore"
        ))))
 (defconst verilog-declaration-re
-  (concat "\\(" verilog-declaration-prefix-re "\\s-*\\)?" verilog-declaration-core-re))
+  (concat "\\(" verilog-declaration-prefix-re "\\s-*\\)?" "\\(" verilog-declaration-core-re "\\|.+_t\\)"))
 (defconst verilog-range-re "\\(\\[[^]]*\\]\\s-*\\)+")
 (defconst verilog-optional-signed-re "\\s-*\\(\\(un\\)?signed\\)?")
 (defconst verilog-optional-signed-range-re
@@ -3203,24 +3203,24 @@ See also `verilog-font-lock-extra-types'.")
 
 (let* ((verilog-type-font-keywords
         (eval-when-compile
-          (verilog-regexp-opt
-           '("and" "buf" "bufif0" "bufif1" "cmos" "defparam" "event"
-             "genvar" "highz0" "highz1" "inout" "input" "integer"
-             "localparam" "mailbox" "nand" "nmos" "nor" "not" "notif0"
-             "notif1" "or" "output" "parameter" "pmos" "pull0" "pull1"
-             "pulldown" "pullup" "rcmos" "real" "realtime" "reg" "rnmos"
-             "rpmos" "rtran" "rtranif0" "rtranif1" "semaphore" "signed"
-             "specparam" "strong0" "strong1" "supply" "supply0" "supply1"
-             "time" "tran" "tranif0" "tranif1" "tri" "tri0" "tri1" "triand"
-             "trior" "trireg" "unsigned" "uwire" "vectored" "wand" "weak0"
-             "weak1" "wire" "wor" "xnor" "xor"
-             ;; 1800-2005
-             "bit" "byte" "chandle" "const" "enum" "int" "logic" "longint"
-             "packed" "ref" "shortint" "shortreal" "static" "string"
-             "struct" "type" "typedef" "union" "var"
-             ;; 1800-2009
-             ;; 1800-2012
-             "interconnect" "nettype" ) nil)))
+          (concat "\\(" (verilog-regexp-opt
+                         '("and" "buf" "bufif0" "bufif1" "cmos" "defparam" "event"
+                           "genvar" "highz0" "highz1" "inout" "input" "integer"
+                           "localparam" "mailbox" "nand" "nmos" "nor" "not" "notif0"
+                           "notif1" "or" "output" "parameter" "pmos" "pull0" "pull1"
+                           "pulldown" "pullup" "rcmos" "real" "realtime" "reg" "rnmos"
+                           "rpmos" "rtran" "rtranif0" "rtranif1" "semaphore" "signed"
+                           "specparam" "strong0" "strong1" "supply" "supply0" "supply1"
+                           "time" "tran" "tranif0" "tranif1" "tri" "tri0" "tri1" "triand"
+                           "trior" "trireg" "unsigned" "uwire" "vectored" "wand" "weak0"
+                           "weak1" "wire" "wor" "xnor" "xor"
+                           ;; 1800-2005
+                           "bit" "byte" "chandle" "const" "enum" "int" "logic" "longint"
+                           "packed" "ref" "shortint" "shortreal" "static" "string"
+                           "struct" "type" "typedef" "union" "var"
+                           ;; 1800-2009
+                           ;; 1800-2012
+                           "interconnect" "nettype" ) nil) "\\|.+_t\\)")))
 
        (verilog-pragma-keywords
         (eval-when-compile
