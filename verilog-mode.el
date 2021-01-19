@@ -2801,7 +2801,7 @@ find the errors."
        "mailbox" "semaphore"
        ))))
 (defconst verilog-declaration-re
-  (concat "\\(" verilog-declaration-prefix-re "\\s-*\\)?" "\\(" verilog-declaration-core-re "\\|.+_t\\s-+\\)"))
+  (concat "\\(" verilog-declaration-prefix-re "\\s-*\\)?" "\\(" verilog-declaration-core-re "\\|._\\(t\\|s\\)\\s-+\\)"))
 (defconst verilog-range-re "\\(\\[[^]]*\\]\\s-*\\)+")
 (defconst verilog-optional-signed-re "\\s-*\\(\\(un\\)?signed\\)?")
 (defconst verilog-optional-signed-range-re
@@ -3220,7 +3220,7 @@ See also `verilog-font-lock-extra-types'.")
                            "struct" "type" "typedef" "union" "var"
                            ;; 1800-2009
                            ;; 1800-2012
-                           "interconnect" "nettype" ) nil) "\\|.+_t\\)")))
+                           "interconnect" "nettype" ) nil) "\\|.+_\\(t\\|s\\)\\)")))
 
        (verilog-pragma-keywords
         (eval-when-compile
