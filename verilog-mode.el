@@ -2801,7 +2801,7 @@ find the errors."
        "mailbox" "semaphore"
        ))))
 (defconst verilog-declaration-re
-  (concat "\\(" verilog-declaration-prefix-re "\\s-*\\)?" "\\(" verilog-declaration-core-re "\\|._\\(t\\|s\\)\\s-+\\)"))
+  (concat "\\(" verilog-declaration-prefix-re "\\s-*\\)?" "\\(" verilog-declaration-core-re "\\|.+_\\(s\\|t\\)\\s-+\\)"))
 (defconst verilog-range-re "\\(\\[[^]]*\\]\\s-*\\)+")
 (defconst verilog-optional-signed-re "\\s-*\\(\\(un\\)?signed\\)?")
 (defconst verilog-optional-signed-range-re
